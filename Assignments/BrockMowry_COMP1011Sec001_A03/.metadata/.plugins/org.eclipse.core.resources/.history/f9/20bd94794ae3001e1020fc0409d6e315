@@ -1,0 +1,58 @@
+package brockmowry_sec001_ex01;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
+public class FactorialController {
+	
+	// Factorial
+	@FXML private TextField factorialField;
+	@FXML private Button calculateButton;
+	@FXML private TextArea leftOutputArea;
+	
+	// Loan Calculator
+	@FXML private TextField loanAmountField;
+	@FXML private TextField interestRateField;
+	@FXML private TextField durationField;
+	@FXML private Button loanCalculateButton;
+	@FXML private TextArea rightOutputArea;
+	
+	@FXML
+	public void initialize() {
+		calculateButton.setOnAction(event -> {
+			if (factorialField.getText().trim().isEmpty()) {
+				leftOutputArea.setText("Please fill in the factorial field...");
+				return;
+			}
+			
+			try {
+				var number = Integer.parseInt(factorialField.getText().trim());
+				
+				var factorialCalculator = new FactorialCalculator(number);
+				factorialCalculator.start();
+				try { factorialCalculator.join(); }
+				catch (InterruptedException e) { e.printStackTrace(); }
+				
+				leftOutputArea.setText(String.format("Factorial of %d is %d", number, factorialCalculator.getFactorial()));				
+			} catch (NumberFormatException e) { 
+				leftOutputArea.setText("Please enter a valid number...");
+			}
+		});
+		
+		loanCalculateButton.setOnAction(event -> {
+			if (factorialField.getText().trim().isEmpty()) {
+				leftOutputArea.setText("Please fill in the factorial field...");
+				return;
+			}
+		});
+	}
+	
+	private boolean areTextFieldsEmpty(TextField... fields) {
+		for (var textField : fields)
+			if (textField.getText().trim().isEmpty())
+				return true;
+	}
+	
+}

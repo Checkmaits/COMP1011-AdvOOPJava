@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane fx:id="mainSplitPane" fx:controller="brockmowry_sec001_ex01.FactorialController" dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21">
+  <items>
+      <BorderPane fx:id="leftBorderPane" prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <Label fx:id="leftHeaderLabel" text="Calculate Async" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </top>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <bottom>
+            <TextArea fx:id="leftOutputArea" editable="false" prefHeight="100.0" prefWidth="276.0" promptText="Output is diplayed here..." BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <GridPane fx:id="leftGridPane" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="117.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="159.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </BorderPane.margin>
+               <children>
+                  <Label fx:id="factorialLabel" text="Get factorial of:" />
+                  <TextField fx:id="factorialField" GridPane.columnIndex="1" />
+                  <Button fx:id="calculateButton" mnemonicParsing="false" text="Calculate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="rightBorderPane" prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <Label fx:id="rightHeaderLabel" text="Loan Calculator" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </top>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <center>
+            <GridPane fx:id="rightGridPane" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="120.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="156.0" minWidth="10.0" prefWidth="156.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="loanAmountField" GridPane.columnIndex="1" />
+                  <TextField fx:id="interestRateField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="durationField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" text="Calculate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="loanAmountLabel" text="Loan Amount:" />
+                  <Label fx:id="interestRateLabel" text="Interest Rate:" GridPane.rowIndex="1" />
+                  <Label fx:id="durationLabel" text="Duration (years):" GridPane.rowIndex="2" />
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </BorderPane.margin>
+            </GridPane>
+         </center>
+         <bottom>
+            <TextArea fx:id="rightOutputArea" editable="false" prefHeight="99.0" prefWidth="276.0" promptText="Output is displayed here..." BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+  </items>
+</SplitPane>

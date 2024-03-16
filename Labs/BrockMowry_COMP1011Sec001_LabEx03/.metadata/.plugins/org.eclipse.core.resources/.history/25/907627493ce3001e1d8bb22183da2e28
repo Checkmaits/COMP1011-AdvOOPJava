@@ -1,0 +1,20 @@
+package brockmowry_sec001_labex03;
+
+import java.util.concurrent.Executors;
+
+public class Exercise01 {
+	
+	public static void main(String[] args) {
+		var simpleArray = new SimpleArray(9);
+		
+		var writer1 = new ArrayWriter(simpleArray, 0);
+		var writer2 = new ArrayWriter(simpleArray, 11);
+		var writer3 = new ArrayWriter(simpleArray, 21);
+		
+		var executor = Executors.newCachedThreadPool();
+		executor.execute(writer1);
+		executor.execute(writer2);
+		executor.execute(writer3);
+	}
+	
+}

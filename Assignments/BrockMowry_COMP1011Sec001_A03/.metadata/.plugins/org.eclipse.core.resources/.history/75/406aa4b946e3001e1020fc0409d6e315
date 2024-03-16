@@ -1,0 +1,7 @@
+package brockmowry_sec001_ex01;
+
+public class FactorialCalculator extends Thread {
+	
+	
+	
+}

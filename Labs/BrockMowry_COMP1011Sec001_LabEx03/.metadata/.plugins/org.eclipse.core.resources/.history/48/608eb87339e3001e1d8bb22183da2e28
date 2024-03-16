@@ -1,0 +1,36 @@
+package brockmowry_sec001_labex03;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+public class Exercise01 {
+	
+	public static void main(String[] args) {
+		var array1 = new SimpleArray(9);
+		var writer1 = new ArrayWriter(0, array1);
+		
+		var array2 = new SimpleArray(9);
+		var writer2 = new ArrayWriter(11, array2);
+		
+		var array3 = new SimpleArray(9);
+		var writer3 = new ArrayWriter(21, array3);
+		
+		var executorService = Executors.newCachedThreadPool();
+		executorService.execute(writer1);
+		executorService.execute(writer2);
+		executorService.execute(writer3);
+		executorService.shutdown();
+		
+		try {
+			if (executorService.awaitTermination(1, TimeUnit.MINUTES)) {
+				System.out.printf("%nContents of SimpleArray:%n");
+				System.out.println(sharedSimpleArray);
+				
+				return;
+			}
+			
+			System.out.println("Timed out while waiting for tasks to finish...");
+		} catch (InterruptedException ex) { ex.printStackTrace(); }
+	}
+	
+}

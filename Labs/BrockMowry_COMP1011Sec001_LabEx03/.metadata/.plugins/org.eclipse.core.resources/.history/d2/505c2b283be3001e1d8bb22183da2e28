@@ -1,0 +1,12 @@
+package brockmowry_sec001_labex03;
+
+public class SimpleArray {
+	
+	private final int[] array;
+	private int writeIndex = 0;
+	
+	public SimpleArray(int size) {
+		this.array = new int[size];
+	}
+	
+}

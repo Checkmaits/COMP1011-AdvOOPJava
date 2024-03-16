@@ -1,0 +1,99 @@
+package brockmowry_sec001_ex02;
+
+import java.util.List;
+import java.util.regex.Pattern;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
+public class Controller {
+
+	// Student info fields
+	@FXML private TextField firstNameField;
+	@FXML private TextField addressField;
+	@FXML private TextField cityField;
+	@FXML private TextField provinceField;
+	@FXML private TextField postalCodeField;
+	@FXML private TextField phoneNumberField;
+	@FXML private TextField emailField;
+	
+	// activities check
+	@FXML private CheckBox basketballCheck;
+    @FXML private CheckBox volleyballCheck;
+    @FXML private CheckBox studentCouncilCheck;
+    @FXML private CheckBox footballCheck;
+    @FXML private CheckBox volunteeringCheck;
+    @FXML private CheckBox swimmingCheck;
+    private final List<CheckBox> checkBoxes = List.of(
+    		basketballCheck, volleyballCheck, studentCouncilCheck,
+    		footballCheck, volunteeringCheck, swimmingCheck
+    );
+	
+	@FXML private Button displayButton;
+	@FXML private TextArea outputArea;
+	
+	@FXML
+	public void initialize() {
+		displayButton.setOnAction(event -> {
+			if (areTextFieldsEmpty(firstNameField, addressField, cityField, provinceField, postalCodeField, phoneNumberField, emailField)) {
+				outputArea.setText("Please fill in all the fields...");
+				return;
+			}
+			
+			// validate fields...
+			if (!validatePostalCode()) {
+				outputArea.setText("Please check your postal code formatting\nCorrect format: L0L1L0");
+				return;
+			}
+			
+			if (!validatePhoneNumber()) {
+				outputArea.setText("Please check your phone number formatting\nCorrect format: 123-456-7890");
+				return;
+			}
+			
+			if (!validateEmail()) {
+				outputArea.setText("Please check your email formatting\nCorrect format: name@mail.com");
+				return;
+			}
+			
+			var stringBuilder = new StringBuilder();
+			stringBuilder.append("First Name: " + firstNameField.getText() + "\n");
+			stringBuilder.append("Address: " + addressField.getText() + "\n");
+			stringBuilder.append("City: " + cityField.getText() + "\n");
+			stringBuilder.append("Province: " + provinceField.getText() + "\n");
+		});
+	}
+	
+	private boolean validatePostalCode() {
+		return validate(postalCodeField.getText().trim(), 
+				"^[A-Za-z]\\d[A-Za-z]\\s?\\d[A-Za-z]\\d$");
+	}
+	
+	private boolean validatePhoneNumber() {
+		return validate(phoneNumberField.getText().trim(), 
+				"^\\(?(\\d{3})\\)?[-.\\s]?(\\d{3})[-.\\s]?(\\d{4})$");
+	}
+	
+	private boolean validateEmail() {
+		return validate(emailField.getText().trim(), 
+				"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+	}
+	
+	private boolean validate(String input, String regex) {
+		var pattern = Pattern.compile(regex);
+		var matcher = pattern.matcher(input);
+		return matcher.matches();
+	}
+	
+	private boolean areTextFieldsEmpty(TextField... fields) {
+		for (var textField : fields)
+			if (textField.getText().trim().isEmpty())
+				return true;
+		
+		return false;
+	}
+	
+}

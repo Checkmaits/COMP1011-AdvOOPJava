@@ -1,0 +1,77 @@
+package brockmowry_sec001_ex01;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
+public class Controller {
+	
+	// Factorial
+	@FXML private TextField factorialField;
+	@FXML private Button calculateButton;
+	@FXML private TextArea leftOutputArea;
+	
+	// Loan Calculator
+	@FXML private TextField loanAmountField;
+	@FXML private TextField interestRateField;
+	@FXML private TextField durationField;
+	@FXML private Button loanCalculateButton;
+	@FXML private TextArea rightOutputArea;
+	
+	@FXML
+	public void initialize() {
+		calculateButton.setOnAction(event -> {
+			if (areTextFieldsEmpty(factorialField)) {
+				leftOutputArea.setText("Please fill in the factorial field...");
+				return;
+			}
+			
+			try {
+				var number = Integer.parseInt(factorialField.getText().trim());
+				
+				var factorialCalculator = new FactorialCalculator(number);
+				factorialCalculator.start();
+				try { factorialCalculator.join(); }
+				catch (InterruptedException e) { e.printStackTrace(); }
+				
+				leftOutputArea.setText(String.format("Factorial of %d is %d", number, factorialCalculator.getFactorial()));				
+			} catch (NumberFormatException e) { 
+				leftOutputArea.setText("Please enter a valid number...");
+			}
+		});
+		
+		loanCalculateButton.setOnAction(event -> {
+			if (areTextFieldsEmpty(loanAmountField, interestRateField, durationField)) {
+				rightOutputArea.setText("Please fill in all the fields...");
+				return;
+			}
+			
+			try {
+				var amount = Integer.parseInt(loanAmountField.getText().trim());
+				var interestRate = Integer.parseInt(interestRateField.getText().trim());
+				var duration = Integer.parseInt(durationField.getText().trim());
+				var interest = calculateInterest(amount, interestRate, duration);
+				rightOutputArea.setText(
+						String.format("You will pay $%.2f in interest over %d years.", interest, duration)
+				);
+			} catch (NumberFormatException e) {
+				rightOutputArea.setText("Please check your inputs (they must all be integers)...");
+			}
+		});
+	}
+	
+	private double calculateInterest(int loanAmount, int interestRate, int duration) {
+		var adjustedInterest = (double) interestRate / 100;
+		return (loanAmount * adjustedInterest * duration) / 100;
+	}
+	
+	private boolean areTextFieldsEmpty(TextField... fields) {
+		for (var textField : fields)
+			if (textField.getText().trim().isEmpty())
+				return true;
+		
+		return false;
+	}
+	
+}

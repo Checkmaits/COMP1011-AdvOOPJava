@@ -1,0 +1,13 @@
+package brockmowry_sec001_labex03;
+
+public class ArrayWriter {
+	
+	private final SimpleArray array;
+	private final int startValue;
+	
+	public ArrayWriter(SimpleArray array, int startValue) {
+		this.array = array;
+		this.startValue = startValue;
+	}
+	
+}

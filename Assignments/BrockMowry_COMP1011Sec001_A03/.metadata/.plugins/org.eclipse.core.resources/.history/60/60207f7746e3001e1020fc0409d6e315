@@ -1,0 +1,27 @@
+package brockmowry_sec001_ex01;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
+public class Controller {
+	
+	// Factorial
+	@FXML private TextField factorialField;
+	@FXML private Button calculateButton;
+	@FXML private TextArea leftOutputArea;
+	
+	@FXML
+	public void initialize() {
+		calculateButton.setOnAction(event -> {
+			if (factorialField.getText().trim().isEmpty()) {
+				leftOutputArea.setText("Please fill in the factorial field...");
+				return;
+			}
+			
+			
+		});
+	}
+	
+}

@@ -1,0 +1,11 @@
+package brockmowry_sec001_ex01;
+
+public class FactorialCalculator extends Thread {
+	
+	private final int number;
+	private long factorial;
+	
+	public FactorialCalculator(int number) { this.number = number;
+	}
+	
+}

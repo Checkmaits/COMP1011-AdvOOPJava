@@ -1,0 +1,11 @@
+package brockmowry_sec001_labex03;
+
+public class Exercise01 {
+	
+	public static void main(String[] args) {
+		
+		// threads
+		var writer1 = new ArrayWriter(9, new SimpleArray(9));
+	}
+	
+}

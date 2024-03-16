@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;BrockMowry_COMP1011Sec002&apos; to &apos;BrockMowry_COMP1011Sec001&apos;&#x0A;- Original element: &apos;BrockMowry_COMP1011Sec002&apos;&#x0A;- Renamed element: &apos;BrockMowry_COMP1011Sec002&apos;&#x0A;- Update references to refactored element" description="Rename Java project &apos;BrockMowry_COMP1011Sec002&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=BrockMowry_COMP1011Sec002" name="BrockMowry_COMP1011Sec001" references="true" stamp="1705431170119" version="1.0"/>
+</session>

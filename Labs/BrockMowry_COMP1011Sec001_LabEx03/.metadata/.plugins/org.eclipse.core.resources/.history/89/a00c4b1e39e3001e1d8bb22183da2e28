@@ -1,0 +1,14 @@
+package brockmowry_sec001_labex03;
+
+public class Exercise01 {
+	
+	public static void main(String[] args) {
+		
+		var array1 = new SimpleArray(9);
+		var writer1 = new ArrayWriter(9, array1);
+		
+		var array2 = new SimpleArray(9);
+		
+	}
+	
+}

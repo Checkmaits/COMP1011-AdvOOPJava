@@ -1,0 +1,3 @@
+INDEX VERSION 1.134+/Users/brockmaitlandmowry/cmpa-sem3/comp1011-java/labs/BrockMowry_COMP1011Sec001_LabEx01/.metadata/.plugins/org.eclipse.jdt.core
+1865797976.index
+3816141742.index

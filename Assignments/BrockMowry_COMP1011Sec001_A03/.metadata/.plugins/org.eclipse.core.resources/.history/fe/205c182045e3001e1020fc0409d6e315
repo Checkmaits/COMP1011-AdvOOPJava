@@ -1,0 +1,17 @@
+package brockmowry_sec001_ex02;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
+
+public class Exercise02 extends Application {
+	
+	@Override
+	public void start(Stage stage) throws Exception {
+		var root = (Parent) FXMLLoader.load(getClass().getResource("exercise02.fxml"));
+		
+	}
+	
+	public static void main(String[] args) { launch(args); }
+	
+}
